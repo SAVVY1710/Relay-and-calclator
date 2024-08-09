@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "author": "The Bin - Hack Club",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-pi-pico-w", "id": "pico", "top": 179.15, "left": 22.75, "attrs": {} },
+    {
+      "type": "wokwi-relay-module",
+      "id": "wokwi-relay-module-0",
+      "top": 547.4,
+      "left": -230.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "wokwi-membrane-keypad-0",
+      "top": 122.8,
+      "left": 284,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "wokwi-lcd1602-0",
+      "top": 608.23,
+      "left": 246.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 476.4,
+      "left": 80.6,
+      "attrs": { "color": "blue" }
+    },
+    { "type": "wokwi-led", "id": "led2", "top": 438, "left": 32.6, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 541.55,
+      "left": 0,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 493.55,
+      "left": -48,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 327.16, "left": -172.8, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 633.6, "left": 47.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "wokwi-relay-module-0:NC", "r2:1", "green", [ "v0" ] ],
+    [ "wokwi-relay-module-0:NO", "r1:1", "green", [ "h0" ] ],
+    [ "r2:2", "led2:A", "green", [ "v0", "h46.8" ] ],
+    [ "r1:2", "led1:A", "green", [ "v0", "h46.8" ] ],
+    [ "wokwi-relay-module-0:VCC", "pico:VBUS", "red", [ "h0", "v-441.6", "h364.8", "v67.2" ] ],
+    [
+      "wokwi-relay-module-0:GND",
+      "pico:GND.8",
+      "black",
+      [ "h-38.4", "v-480.4", "h422.4", "v96" ]
+    ],
+    [ "wokwi-relay-module-0:IN", "pico:GP4", "green", [ "h-105.6", "v-403.4" ] ],
+    [ "wokwi-relay-module-0:COM", "vcc1:VCC", "green", [ "h0" ] ],
+    [ "led1:C", "gnd1:GND", "green", [ "v0" ] ],
+    [ "led2:C", "gnd1:GND", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
