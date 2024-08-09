@@ -18,13 +18,7 @@
       "left": 284,
       "attrs": {}
     },
-    {
-      "type": "wokwi-lcd1602",
-      "id": "wokwi-lcd1602-0",
-      "top": 608.23,
-      "left": 246.4,
-      "attrs": {}
-    },
+    { "type": "wokwi-lcd1602", "id": "wokwi-lcd1602-0", "top": 752.23, "left": 160, "attrs": {} },
     {
       "type": "wokwi-led",
       "id": "led1",
@@ -67,7 +61,15 @@
     [ "wokwi-relay-module-0:IN", "pico:GP4", "green", [ "h-105.6", "v-403.4" ] ],
     [ "wokwi-relay-module-0:COM", "vcc1:VCC", "green", [ "h0" ] ],
     [ "led1:C", "gnd1:GND", "green", [ "v0" ] ],
-    [ "led2:C", "gnd1:GND", "green", [ "v0" ] ]
+    [ "led2:C", "gnd1:GND", "green", [ "v0" ] ],
+    [ "wokwi-membrane-keypad-0:R1", "pico:GP28", "green", [ "v-28.8", "h-201.6", "v-144" ] ],
+    [ "wokwi-membrane-keypad-0:R2", "pico:GP27", "green", [ "v0", "h-230.8", "v-192", "h-67.2" ] ],
+    [ "wokwi-membrane-keypad-0:R3", "pico:GP26", "green", [ "v0" ] ],
+    [ "wokwi-membrane-keypad-0:R4", "pico:GP22", "green", [ "v28.8", "h-269", "v-192" ] ],
+    [ "wokwi-membrane-keypad-0:C1", "pico:GP21", "green", [ "v38.4", "h-288.1", "v-182.4" ] ],
+    [ "wokwi-membrane-keypad-0:C2", "pico:GP20", "green", [ "v48", "h-307.2", "v-182.4" ] ],
+    [ "wokwi-membrane-keypad-0:C3", "pico:GP19", "green", [ "v57.6", "h-326.55", "v-182.4" ] ],
+    [ "wokwi-membrane-keypad-0:C4", "pico:GP17", "green", [ "v9.6", "h-297.9", "v-115.2" ] ]
   ],
   "dependencies": {}
 }

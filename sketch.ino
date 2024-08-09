@@ -1,12 +1,42 @@
-// Now turn this trash into treasure!
+#include <Keypad.h>
 
-const int relaypin = 4;
+// Define the number of rows and columns in the keypad
+const uint8_t ROWS = 4;
+const uint8_t COLS = 4;
+
+// Define the key map for the keypad
+char keys[ROWS][COLS] = {
+  {'1', '2', '3', 'A'},
+  {'4', '5', '6', 'B'},
+  {'7', '8', '9', 'C'},
+  {'*', '0', '#', 'D'}
+};
+
+// Define the pin numbers for the columns and rows
+uint8_t rowPins[ROWS] = {28, 27, 26, 22}; // C1, C2, C3, C4
+uint8_t colPins[COLS] = {21, 20, 19, 17}; // R1, R2, R3, R4
+
+// Initialize the keypad
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+
+const int relayPin = 4; // Define the relay pin
+
 void setup() {
-  pinMode(relaypin, OUTPUT);
+  Serial1.begin(115200);  // Initialize serial communication
+  pinMode(relayPin, OUTPUT);  // Set relay pin as output
 }
+
 void loop() {
-  digitalWrite(relaypin, HIGH);
-  delay(1000);
-  digitalWrite(relaypin, LOW);
-  delay(1000);
+  char key = keypad.getKey();  // Get the key pressed
+
+  if (key != NO_KEY) {  // If a key is pressed
+    Serial1.println(key);  // Print the key to the serial monitor
+
+    // Control relay based on key press (example)
+    if (key == 'A') {
+      digitalWrite(relayPin, HIGH);  // Turn relay ON
+    } else if (key == 'B') {
+      digitalWrite(relayPin, LOW);   // Turn relay OFF
+    }
+  }
 }
