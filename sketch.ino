@@ -1,4 +1,7 @@
 #include <Keypad.h>
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(12, 9, 5, 10, 7,6);
 
 // Define the number of rows and columns in the keypad
 const uint8_t ROWS = 4;
@@ -13,8 +16,8 @@ char keys[ROWS][COLS] = {
 };
 
 // Define the pin numbers for the columns and rows
-uint8_t rowPins[ROWS] = {28, 27, 26, 22}; // C1, C2, C3, C4
-uint8_t colPins[COLS] = {21, 20, 19, 17}; // R1, R2, R3, R4
+uint8_t colPins[COLS] = {21, 20, 19, 18}; // C1, C2, C3, C4
+uint8_t rowPins[ROWS] = {28, 27, 26, 22}; // R1, R2, R3, R4
 
 // Initialize the keypad
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
@@ -24,6 +27,9 @@ const int relayPin = 4; // Define the relay pin
 void setup() {
   Serial1.begin(115200);  // Initialize serial communication
   pinMode(relayPin, OUTPUT);  // Set relay pin as output
+  lcd.begin(16, 2);
+  // you can now interact with the LCD, e.g.:
+  lcd.print("Hello World!");
 }
 
 void loop() {

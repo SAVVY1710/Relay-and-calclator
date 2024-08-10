@@ -11,14 +11,7 @@
       "left": -230.4,
       "attrs": {}
     },
-    {
-      "type": "wokwi-membrane-keypad",
-      "id": "wokwi-membrane-keypad-0",
-      "top": 122.8,
-      "left": 284,
-      "attrs": {}
-    },
-    { "type": "wokwi-lcd1602", "id": "wokwi-lcd1602-0", "top": 752.23, "left": 160, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "wokwi-lcd1602-0", "top": 809.83, "left": -416, "attrs": {} },
     {
       "type": "wokwi-led",
       "id": "led1",
@@ -26,7 +19,7 @@
       "left": 80.6,
       "attrs": { "color": "blue" }
     },
-    { "type": "wokwi-led", "id": "led2", "top": 438, "left": 32.6, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": 457.2, "left": 42.2, "attrs": { "color": "red" } },
     {
       "type": "wokwi-resistor",
       "id": "r1",
@@ -42,7 +35,15 @@
       "attrs": { "value": "220" }
     },
     { "type": "wokwi-vcc", "id": "vcc1", "top": 327.16, "left": -172.8, "attrs": {} },
-    { "type": "wokwi-gnd", "id": "gnd1", "top": 633.6, "left": 47.4, "attrs": {} }
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 633.6, "left": 47.4, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 723.95,
+      "left": -566.4,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": 132.4, "left": 293.6, "attrs": {} }
   ],
   "connections": [
     [ "pico:GP0", "$serialMonitor:RX", "", [] ],
@@ -62,14 +63,26 @@
     [ "wokwi-relay-module-0:COM", "vcc1:VCC", "green", [ "h0" ] ],
     [ "led1:C", "gnd1:GND", "green", [ "v0" ] ],
     [ "led2:C", "gnd1:GND", "green", [ "v0" ] ],
-    [ "wokwi-membrane-keypad-0:R1", "pico:GP28", "green", [ "v-28.8", "h-201.6", "v-144" ] ],
-    [ "wokwi-membrane-keypad-0:R2", "pico:GP27", "green", [ "v0", "h-230.8", "v-192", "h-67.2" ] ],
-    [ "wokwi-membrane-keypad-0:R3", "pico:GP26", "green", [ "v0" ] ],
-    [ "wokwi-membrane-keypad-0:R4", "pico:GP22", "green", [ "v28.8", "h-269", "v-192" ] ],
-    [ "wokwi-membrane-keypad-0:C1", "pico:GP21", "green", [ "v38.4", "h-288.1", "v-182.4" ] ],
-    [ "wokwi-membrane-keypad-0:C2", "pico:GP20", "green", [ "v48", "h-307.2", "v-182.4" ] ],
-    [ "wokwi-membrane-keypad-0:C3", "pico:GP19", "green", [ "v57.6", "h-326.55", "v-182.4" ] ],
-    [ "wokwi-membrane-keypad-0:C4", "pico:GP17", "green", [ "v9.6", "h-297.9", "v-115.2" ] ]
+    [ "wokwi-lcd1602-0:VSS", "pico:GND.8", "black", [ "v28.8", "h-105.6", "v-556.8" ] ],
+    [ "wokwi-lcd1602-0:VDD", "pico:VBUS", "red", [ "v57.6", "h-95.9", "v-652.8" ] ],
+    [ "wokwi-lcd1602-0:RS", "pico:GP12", "orange", [ "v-355.2", "h-345.3", "v-124.8" ] ],
+    [ "wokwi-lcd1602-0:RW", "pico:GND.8", "black", [ "v-230.4", "h-96.1", "v-336" ] ],
+    [ "pico:GP9", "wokwi-lcd1602-0:E", "gold", [ "h-86.4", "v547.2", "h422.4" ] ],
+    [ "wokwi-lcd1602-0:D4", "pico:GP5", "blue", [ "v76.8", "h-470.4", "v-585.6" ] ],
+    [ "wokwi-lcd1602-0:D5", "pico:GP10", "#8f4814", [ "v-38.4", "h-441.5", "v-403.2" ] ],
+    [ "wokwi-lcd1602-0:D6", "pico:GP7", "gray", [ "v9.6", "h-431.8", "v-508.8" ] ],
+    [ "wokwi-lcd1602-0:D7", "pico:GP6", "magenta", [ "v28.8", "h-470.1", "v-537.6" ] ],
+    [ "wokwi-lcd1602-0:K", "pico:GND.2", "black", [ "v-355.2", "h-556.8", "v-153.6" ] ],
+    [ "pico:VBUS", "r3:2", "red", [ "h115.51", "v-96", "h470.4", "v720" ] ],
+    [ "r3:1", "wokwi-lcd1602-0:A", "red", [ "v182.4", "h-182.4" ] ],
+    [ "keypad1:R1", "pico:GP28", "green", [ "v0", "h-115.2", "v-220.8" ] ],
+    [ "keypad1:R2", "pico:GP27", "green", [ "v9.6", "h-134.8", "v-211.2" ] ],
+    [ "keypad1:R3", "pico:GP26", "green", [ "v19.2", "h-153.9", "v-211.2" ] ],
+    [ "keypad1:R4", "pico:GP22", "green", [ "v28.8", "h-173", "v-201.6" ] ],
+    [ "keypad1:C1", "pico:GP21", "green", [ "v38.4", "h-192.1", "v-192" ] ],
+    [ "keypad1:C2", "pico:GP20", "green", [ "v48", "h-211.2", "v-192" ] ],
+    [ "keypad1:C3", "pico:GP19", "green", [ "v57.6", "h-230.55", "v-192" ] ],
+    [ "keypad1:C4", "pico:GP18", "green", [ "v67.2", "h-249.9", "v-192" ] ]
   ],
   "dependencies": {}
 }
