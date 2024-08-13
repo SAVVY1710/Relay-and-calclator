@@ -3,6 +3,7 @@
   "author": "The Bin - Hack Club",
   "editor": "wokwi",
   "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 217.8, "left": 473.2, "attrs": {} },
     { "type": "board-pi-pico-w", "id": "pico", "top": 179.15, "left": 22.75, "attrs": {} },
     {
       "type": "wokwi-relay-module",
@@ -17,7 +18,7 @@
       "id": "led1",
       "top": 476.4,
       "left": 80.6,
-      "attrs": { "color": "blue" }
+      "attrs": { "color": "green" }
     },
     { "type": "wokwi-led", "id": "led2", "top": 457.2, "left": 42.2, "attrs": { "color": "red" } },
     {
@@ -43,7 +44,20 @@
       "left": -566.4,
       "attrs": { "value": "220" }
     },
-    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": 132.4, "left": 293.6, "attrs": {} }
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 313.4,
+      "left": 345.6,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": 253.55,
+      "left": 288,
+      "attrs": { "value": "10000" }
+    }
   ],
   "connections": [
     [ "pico:GP0", "$serialMonitor:RX", "", [] ],
@@ -75,14 +89,11 @@
     [ "wokwi-lcd1602-0:K", "pico:GND.2", "black", [ "v-355.2", "h-556.8", "v-153.6" ] ],
     [ "pico:VBUS", "r3:2", "red", [ "h115.51", "v-96", "h470.4", "v720" ] ],
     [ "r3:1", "wokwi-lcd1602-0:A", "red", [ "v182.4", "h-182.4" ] ],
-    [ "keypad1:R1", "pico:GP28", "green", [ "v0", "h-115.2", "v-220.8" ] ],
-    [ "keypad1:R2", "pico:GP27", "green", [ "v9.6", "h-134.8", "v-211.2" ] ],
-    [ "keypad1:R3", "pico:GP26", "green", [ "v19.2", "h-153.9", "v-211.2" ] ],
-    [ "keypad1:R4", "pico:GP22", "green", [ "v28.8", "h-173", "v-201.6" ] ],
-    [ "keypad1:C1", "pico:GP21", "green", [ "v38.4", "h-192.1", "v-192" ] ],
-    [ "keypad1:C2", "pico:GP20", "green", [ "v48", "h-211.2", "v-192" ] ],
-    [ "keypad1:C3", "pico:GP19", "green", [ "v57.6", "h-230.55", "v-192" ] ],
-    [ "keypad1:C4", "pico:GP18", "green", [ "v67.2", "h-249.9", "v-192" ] ]
+    [ "btn1:2.r", "pico:GND.8", "green", [ "h-268.6", "v-95.8" ] ],
+    [ "pico:VBUS", "r4:1", "green", [ "h0" ] ],
+    [ "r4:2", "bb1:8t.a", "green", [ "v0" ] ],
+    [ "pico:GP2", "bb1:8t.b", "green", [ "h0" ] ],
+    [ "bb1:8t.c", "btn1:1.l", "green", [ "v9.6", "h-211.2" ] ]
   ],
   "dependencies": {}
 }
